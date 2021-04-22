@@ -2,6 +2,23 @@
 
 import random
 
+def pcGuess(x):
+	secretNumber = int(input('Enter the secret number: '))
+	guess = 0
+	low = 1
+	high = x
+	while guess != secretNumber:
+		guess = random.randint(low, high)
+		if guess > secretNumber:
+			print(f'AI guessed {guess}. Guess too high, guessing again')
+			high == high - 1
+		elif guess < secretNumber:
+			print(f'AI guessed {guess}. Guess too low, guessing again')
+			low == low + 1
+		else:
+			print(f'AI guessed the number {secretNumber}!')
+			
+
 def guess(x):
     randomNum = random.randint(1,x)
     guess = 0
@@ -30,10 +47,13 @@ def computerGuess(x):
             lowGuess = guess + 1
     print(f'AI guessed the number {guess}!') 
 
-welcomeMessage = input('Welcome to number guessing game!\nWho is gonna guess? Computer(C) or Human(H)').lower()
+welcomeMessage = input('Welcome to number guessing game!\nWho is gonna guess?\nComputer with user interact(C)\nComputer without user interact(AI)\n Human(H)\n ').lower()
 if welcomeMessage == 'c':
     x = int(input('Chosse the higher number to be guessed: '))
     computerGuess(x)
+elif welcomeMessage == 'ai':
+   x = int(input('Choose the higher number to be guessed: '))
+   pcGuess(x)
    
 else:
     x = int(input('Chosse the higher number to be guessed: '))
